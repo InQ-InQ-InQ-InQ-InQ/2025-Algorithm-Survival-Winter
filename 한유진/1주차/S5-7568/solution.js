@@ -16,9 +16,8 @@ class Weight {
 function getWeights() {
   const values = input.slice(1);
   const weights = [];
-  for (let i = 0; i < values.length; i += 2) {
-    const a = parseInt(values[i]);
-    const b = parseInt(values[i + 1]);
+  for (let i = 0; i < values.length; i++) {
+    const [a, b] = values[i].split(" ").map((val) => parseInt(val));
     if (!isNaN(a) && !isNaN(b)) {
       weights.push(new Weight(a, b));
     }
@@ -27,7 +26,7 @@ function getWeights() {
 }
 
 function isBigger(a, b) {
-  return a.x > b.x && a.y > b.y;
+  return a.x < b.x && a.y < b.y;
 }
 
 function getRanks() {
@@ -38,8 +37,9 @@ function getRanks() {
     for (let compWeight of weights) {
       if (isBigger(weight, compWeight)) num++;
     }
-    result.push(num);
+    result.push(num + 1);
   }
+  return result;
 }
 
 solution();
