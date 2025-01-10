@@ -2,6 +2,19 @@
 
 [문제 링크](https://www.acmicpc.net/problem/1309)
 
+### 성능 요약
+
+메모리: 17868 KB, 시간: 120 ms
+
+### 분류
+
+다이나믹 프로그래밍
+
+### 제출 일자
+
+2025년 1월 9일 17:21:16
+
+
 ### 문제 요약
 <p><img alt="" src="https://www.acmicpc.net/upload/201004/dnfl.JPG" style="height:223px; width:224px"></p>
 다음과 같이 있는 우리에 가로 세로로 안겹치게 어떻게 사자를 배치하는지에 대해서 물어보는 문제이다
