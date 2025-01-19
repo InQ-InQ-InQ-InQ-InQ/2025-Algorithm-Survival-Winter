@@ -36,7 +36,7 @@ public class Problem_11724_Silver2_DFS {
         }
 
         int count = 0;
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= n; i++) { // 모든 노드를 돌면서 방문하지 않은 노드가 있을 시 count 증가
             if (!visited[i]) {
                 count++;
                 dfs(i);
@@ -46,14 +46,14 @@ public class Problem_11724_Silver2_DFS {
         System.out.println(count);
     }
 
-    public static void dfs(int start) {
-        if (visited[start]) {
+    public static void dfs(int x) { // 연결된 노드를 모두 방문하도록 함
+        if (visited[x]) { // 인덱스가 점차 올라가면서, 이미 방문한 i - 1, i - 2 등의 노드들을 스킵하기 위한 로직
             return;
         }
-        visited[start] = true;
-        for (int i : graph[start]) {
-            if (!visited[i]) {
-                dfs(i);
+        visited[x] = true;
+        for (int adjacentVertex : graph[x]) {
+            if (!visited[adjacentVertex]) {
+                dfs(adjacentVertex);
             }
         }
     }
