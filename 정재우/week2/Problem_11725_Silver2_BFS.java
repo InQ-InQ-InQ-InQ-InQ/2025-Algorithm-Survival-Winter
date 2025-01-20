@@ -3,7 +3,7 @@ package week2;
 import java.io.*;
 import java.util.*;
 
-public class Problem_11725_Silver2 {
+public class Problem_11725_Silver2_BFS {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
