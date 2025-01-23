@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Problem_1012_Silver_DFS {
+public class Problem_1012_Silver2_DFS {
     static boolean[][] map;
     static boolean[][] visited;
     static int[] dx = {-1, 1, 0, 0};
