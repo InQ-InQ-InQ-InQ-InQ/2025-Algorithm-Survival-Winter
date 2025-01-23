@@ -4,43 +4,54 @@ import java.io.*;
 import java.util.*;
 
 public class Problem_11725_Silver2_BFS {
+    static List<Integer>[] tree;
+    static boolean[] visited;
+    static int[] parent;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
-        int[] parent = new int[n + 1];
+        int N = Integer.parseInt(br.readLine());
 
-        List<Integer>[] tree = new ArrayList[n + 1];
-        for (int i = 1; i <= n; i++) {
+        tree = new ArrayList[N + 1];
+        visited = new boolean[N + 1];
+        parent = new int[N + 1];
+
+        for (int i = 0; i <= N; i++) {
             tree[i] = new ArrayList<>();
         }
-        boolean[] visited = new boolean[n + 1];
-        StringTokenizer st;
-        for (int i = 1; i < n; i++) {
-            st = new StringTokenizer(br.readLine());
+
+        for (int i = 1; i <= N - 1; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
+
             tree[a].add(b);
             tree[b].add(a);
         }
 
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(1);
-        visited[1] = true;
+        // logic
+        bfs(1);
 
-        while (!queue.isEmpty()) {
-            int cur = queue.poll();
-            for (int next : tree[cur]) {
-                if (visited[next]) {
-                    continue;
-                }
-                visited[next] = true;
-                queue.add(next);
-                parent[next] = cur;
-            }
-        }
-
-        for (int i = 2; i <= n; i++) {
+        for (int i = 1; i < N; i++) {
             System.out.println(parent[i]);
+        }
+    }
+
+    public static void bfs(int start) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(start);
+        visited[start] = true;
+
+        while(!queue.isEmpty()) {
+            Integer current = queue.poll();
+
+            for (Integer next : tree[current]) {
+                if (!visited[next]) {
+                    visited[next] = true;
+                    queue.offer(next);
+                    parent[next - 1] = current;
+                }
+            }
         }
     }
 }
